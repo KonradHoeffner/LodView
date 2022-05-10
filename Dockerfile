@@ -6,8 +6,7 @@ COPY . /app
 RUN mvn compile war:war
 
 FROM tomcat:9
-LABEL maintainer=adrian.gschwend@zazuko.com
 ENV CATALINA_OPTS="-XX:+UseSerialGC"
-COPY --from=builder /app/target/lodview.war /usr/local/tomcat/webapps/lodview.war
+COPY --from=builder /app/target/lodview.war /usr/local/tomcat/webapps/ROOT.war
 CMD ["catalina.sh", "run"]
 EXPOSE 8080 8009
