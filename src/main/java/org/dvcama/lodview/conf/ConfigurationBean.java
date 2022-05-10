@@ -154,7 +154,7 @@ public class ConfigurationBean implements ServletContextAware, Cloneable {
 
 	private String getSingleConfValue(String prop, String defaultValue) {
 		String value = System.getenv("LodView"+prop);
-		if(value!=null) {return value;}
+		if(value!=null) {logger.warn("Overriden "+prop+" with environment variable value "+value);return value;}
 		NodeIterator iter = confModel.listObjectsOfProperty(confModel.createProperty(confModel.getNsPrefixURI("conf"), prop));
 		while (iter.hasNext()) {
 			RDFNode node = iter.next();
