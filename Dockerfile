@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 FROM maven:3-jdk-11 AS builder
 WORKDIR /app
 COPY pom.xml /app
